@@ -78,8 +78,3 @@ public class Shape {
     }
 }
 
-
-    public double getRectangle(double num1, double num2) {
-        return num1 * num1;
-    }
-}
