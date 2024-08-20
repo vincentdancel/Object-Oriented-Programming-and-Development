@@ -18,6 +18,23 @@ public class JavaApplication2 {
     
 }
 
+// It should be in separate FILE
+
+
+package javaapplication2;
+
+public class TestCar {
+      
+    public static void main(String[] args) {
+        JavaApplication2 c1 = new JavaApplication2();
+          c1.SetofColor("black");
+    System.out.println (c1.getColor());
+    }
+    
+}
+
+
+
 
     
     
