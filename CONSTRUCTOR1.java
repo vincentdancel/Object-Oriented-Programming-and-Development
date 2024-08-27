@@ -67,3 +67,22 @@ public class ComputerLab {
     }
 
 }
+
+---------------------------------------------------------
+
+    package computerlab;
+
+public class TestComputer {
+
+    public static void main(String[] args) {
+        ComputerLab clb1 = new ComputerLab();
+
+        System.out.println("Brand: " +clb1.getMonitorBrand());
+        System.out.println("Monitor Size: " + clb1.getMonitorSize());
+        System.out.println("Number of Chairs: " + clb1.getNumOfChairs());
+        System.out.println("Number of Light: " + clb1.getNumOfLight());
+        System.out.println("Has Wi-fi? - " +clb1.isHasWifi());
+        System.out.println("Has White Board? - " + clb1.isHasWhiteBoard());
+
+    }
+}
