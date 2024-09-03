@@ -94,3 +94,22 @@ public class AreaOfShape {
         return message;
     }
 }
+
+--------------------------------------------------------------
+
+package areaofshape;
+
+import javax.swing.JOptionPane;
+
+public class ShowAreaOfShape {
+
+    public static void main(String[] args) {
+
+        AreaOfShape a = new AreaOfShape();
+
+        a.setChoice(Integer.parseInt(JOptionPane.showInputDialog("Choose:\nCircle = 1\nSquare = 2\nTriangle = 3 \nRectangle = 4")));
+
+        JOptionPane.showMessageDialog(null, a.display(), "Output: ", JOptionPane.INFORMATION_MESSAGE);
+
+    }
+}
