@@ -1,0 +1,88 @@
+
+package bank;
+
+public class Bank {
+
+    private String accountHolder;
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+
+    public Bank(String accountHolder, double initialBalance) {
+        this.accountHolder = accountHolder;
+        this.balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited :" + amount);
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+        System.out.println("Withdrew $" + String.format("%.2f", amount) + " from account.");
+
+    }
+}
+-----------------------------------------------------------
+package bank;
+
+import java.util.Scanner;
+
+public class Bank2 {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter account holder's name: ");
+        String accountHolder = scanner.nextLine();
+
+        System.out.print("Enter initial balance: ");
+        double initialBalance = scanner.nextDouble();
+        scanner.nextLine();
+
+        Bank account = new Bank(accountHolder, initialBalance);
+
+        System.out.println("Account created for " + account.getAccountHolder() + " with initial balance: $" + account.getBalance());
+
+        while (true) {
+            System.out.println("1. Deposit"
+                    + "\n2. Withdraw"
+                    + "\n3. Check Balance"
+                    + "\n4. Exit"
+                    + "\nChoose an option:");
+            int option = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (option) {
+                case 1:
+                    System.out.print("Enter amount to deposit: ");
+                    double depositAmount = scanner.nextDouble();
+                    scanner.nextLine();
+                    account.deposit(depositAmount);
+                    break;
+                case 2:
+                    System.out.print("Enter amount to withdraw: ");
+                    double withdrawAmount = scanner.nextDouble();
+                    scanner.nextLine();
+                    account.withdraw(withdrawAmount);
+                    break;
+                case 3:
+                    System.out.println("Current balance: " + account.getBalance());
+                    break;
+                case 4:
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
+}
