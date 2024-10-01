@@ -1,0 +1,124 @@
+package car;
+
+import java.util.Scanner;
+
+public class Car {
+
+    private String make;
+    private String model;
+    private String licensePlate;
+    private double rentalPricePerDay;
+    private boolean isRented;
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public double getRentalPricePerDay() {
+        return rentalPricePerDay;
+    }
+
+    public void setRentalPricePerDay(double rentalPricePerDay) {
+        this.rentalPricePerDay = rentalPricePerDay;
+    }
+
+    public boolean isRented() {
+        return isRented;
+    }
+
+    public void setIsRented(boolean isRented) {
+        this.isRented = isRented;
+    }
+
+    public void rent() {
+        if (!isRented) {
+            System.out.println("Car is not rented. Cannot returned"); //
+            return;
+        }
+
+    }
+
+    public void returnCar() {
+        if (isRented) {
+            System.out.println("Car is rented. Cannot rent again");//
+            return;
+        }
+
+    }
+
+    public void displayDetails() {
+        System.out.println("Car Details:"
+                + "\nMake: " + make
+                + "\nModel: " + model
+                + "\nLicense Plate: " + licensePlate
+                + "\nRental Price Per Day: $" + rentalPricePerDay
+                + "\nIs Rented: " + isRented);
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------
+
+package car;
+
+import java.util.Scanner;
+
+public class CarTest {
+
+    public static void main(String[] args) {
+
+        Scanner n = new Scanner(System.in);
+        Car car = new Car();
+
+        System.out.print("Enter make: ");
+        String makes = n.nextLine();
+        car.setMake(makes);
+
+        System.out.print("Enter model: ");
+        String models = n.nextLine();
+        car.setModel(models);
+
+        System.out.print("Enter license plate: ");
+        String plates = n.nextLine();
+        car.setLicensePlate(plates);
+
+        System.out.print("Enter rental price per day: ");
+        double rentprice = n.nextDouble();
+        car.setRentalPricePerDay(rentprice);
+
+        System.out.print("Is the car rented? (true/false): ");
+        boolean isrented = n.nextBoolean();
+        car.setIsRented(isrented);
+
+        car.displayDetails();
+
+        if (!car.isRented()) {
+            car.rent();
+        }
+
+        if (car.isRented()) {
+            car.returnCar();
+        }
+
+        n.close();
+    }
+}
