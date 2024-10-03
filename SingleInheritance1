@@ -1,0 +1,38 @@
+package main;
+
+class Employee {
+
+    String workPlace;  
+    
+    public Employee(String workPlace) {
+        this.workPlace = workPlace; 
+    }
+
+    public void display() {
+        System.out.println("Place of Work: " + workPlace);
+    }
+}
+
+class Intern extends Employee {
+
+    String name;  
+
+    public Intern(String workPlace, String name) {
+        super(workPlace);  
+        this.name = name;  
+    }
+
+    public void displayInternInfo() {
+        display();  
+        System.out.println("Name of intern: " + name); 
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Intern intern = new Intern("Cor Jesu College","Alice");  
+     
+        intern.displayInternInfo();
+    }
+}
