@@ -1,0 +1,93 @@
+
+package television;
+
+
+
+class ElectronicDevice {
+
+    private boolean poweredOn;
+
+    public void turnOn() {
+        poweredOn = true;
+    }
+
+    public void turnOff() {
+        poweredOn = false;
+    }
+
+    public boolean isPoweredOn() {
+        return poweredOn;
+    }
+}
+
+class Computer extends ElectronicDevice {
+@Override
+    public void turnOn() {
+        super.turnOn();
+        System.out.println("Turning on...");
+    }
+@Override
+    public void turnOff() {
+        super.turnOff();
+        System.out.println("Turning off...");
+    }
+}
+
+class Smartphone extends ElectronicDevice {
+@Override
+    public void turnOn() {
+        super.turnOn();
+        System.out.println("Turning on...");
+    }
+@Override
+    public void turnOff() {
+        System.out.println("Shutting down...");
+        super.turnOff();
+    }
+}
+
+class Television extends ElectronicDevice {
+@Override
+    public void turnOn() {
+        System.out.println("Turning on television...");
+        super.turnOn();
+    }
+@Override
+    public void turnOff() {
+        System.out.println("Turning off television...");
+        super.turnOff();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Computer computer = new Computer();
+        Smartphone smartphone = new Smartphone();
+        Television television = new Television();
+
+        System.out.println("Computer:");
+        computer.turnOn();
+        System.out.println("Powered on: " + computer.isPoweredOn());
+        computer.turnOff();
+        System.out.println("Powered off: " + computer.isPoweredOn());
+        System.out.println();
+
+        System.out.println("Smartphone:");
+        smartphone.turnOn();
+        System.out.println("Powered on: " + smartphone.isPoweredOn());
+        smartphone.turnOff();
+        System.out.println("Powered off: " + smartphone.isPoweredOn());
+        System.out.println();
+
+        System.out.println("Television:");
+        television.turnOn();
+        System.out.println("Powered on: " + television.isPoweredOn());
+        television.turnOff();
+        System.out.println("Powered off: " + television.isPoweredOn());
+    }
+}
+
+Television.java
+Displaying Television.java.
