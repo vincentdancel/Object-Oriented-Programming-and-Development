@@ -1,0 +1,63 @@
+package hotelroom;
+
+class Hotel {
+
+    private int roomNumber;
+    private double nightRentalRate;
+
+    public Hotel(int roomNumber) {
+        this.roomNumber = roomNumber; 
+        this.nightRentalRate = calculateNightRentalRate(); 
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public double getNightRentalRate() {
+        return nightRentalRate;
+    }
+
+  
+    private double calculateNightRentalRate() {
+        if (roomNumber <= 299) {
+            return 2595.00;
+        } else {
+            return 3795.00;
+        }
+    }
+}
+
+class Suite extends Hotel {
+
+    private double surcharge;
+
+    public Suite(int roomNumber, double surcharge) {
+        super(roomNumber);
+        this.surcharge = surcharge;
+    }
+
+    public double getSurcharge() {
+        return surcharge;
+    }
+
+    @Override
+    public double getNightRentalRate() {
+        return super.getNightRentalRate() + surcharge;
+    }
+
+    public void displayInfoSuite() {
+        System.out.println("Hotel Room Number: " + getRoomNumber());
+        System.out.println("The added surcharge in your nightly rate: Php " + "+" + getSurcharge());
+        System.out.println("The TOTAL Hotel Rate per Night: Php " + getNightRentalRate());
+
+    }
+}
+
+public class HotelRoom {
+
+    public static void main(String[] args) {
+        Suite suite = new Suite(200, 500);
+        suite.displayInfoSuite();
+    }
+}
