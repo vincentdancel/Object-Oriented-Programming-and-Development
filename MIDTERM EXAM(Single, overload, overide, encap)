@@ -1,0 +1,62 @@
+package vehicle;
+
+ class Vehicle {
+
+    private int numWheels;
+    private int aveMPG;
+
+    public Vehicle(int numWheels, int aveMPG) {
+        this.numWheels = numWheels;
+        this.aveMPG = aveMPG;
+    }
+
+    public Vehicle(int aveMPG) {
+        this.numWheels = 4;
+        this.aveMPG = aveMPG;
+    }
+
+    public String toString() {
+        return "(Number of Wheels: " + numWheels + ", MPG: " + aveMPG +")";
+    }
+
+    public String toString(String message) {
+        return message + " (Number of Wheels: " + numWheels + ", MPG: " + aveMPG +")";
+    }
+}
+
+ class Car extends Vehicle {
+
+    public Car(int aveMPG) {
+        super(4, aveMPG);
+    }
+
+    public Car() {
+        super(25);
+    }
+}
+
+package vehicle;
+
+public class UseVehicle {
+
+    public static void main(String[] args) {
+
+        Vehicle vehicle1 = new Vehicle(2, 30);
+        Vehicle vehicle2 = new Vehicle(20);
+
+        Car car1 = new Car(35);
+        Car car2 = new Car();
+
+        System.out.println(vehicle1
+                + "\n" + vehicle2
+                + "\n" + car1
+                + "\n" + car2);
+
+        System.out.println(vehicle1.toString("\nThis is vehicle 1-")
+                + "\n" + vehicle2.toString("This is vehicle 2-")
+                + "\n" + car1.toString("This is car 1-")
+                + "\n" + car2.toString("This is car 2-"));
+
+    }
+}
+
