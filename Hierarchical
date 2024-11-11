@@ -1,0 +1,118 @@
+package animals;
+
+public class Animal {
+
+    String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void displayname() {
+        System.out.println("\nAnimal's Name: " + name);
+    }
+}
+
+---------------------------------------------------------
+package animals;
+
+public class Mammal extends Animal {
+
+    private String furHair;
+
+    public Mammal(String name, String furHair) {
+        super(name);
+        this.furHair = furHair;
+    }
+
+    public String getFurHair() {
+        return furHair;
+    }
+
+    public void displayMammal() {
+        displayname();
+        System.out.println("The mammal has a: " + furHair);
+    }
+}
+
+---------------------------------------------------------------
+
+package animals;
+
+public class Bird extends Animal {
+
+    private String feather;
+
+    public Bird(String name, String feather) {
+        super(name);
+        this.feather = feather;
+    }
+
+    public String getFeather() {
+        return feather;
+    }
+
+    public void displaybird() {
+        displayname();
+        System.out.println("The bird has a: " + feather);
+
+    }
+
+}
+    
+------------------------------------------------------------------
+
+package animals;
+
+public class Dog extends Mammal {
+
+    public Dog(String name, String furHair) {
+        super(name, furHair);
+    }
+
+    public void dogDisplay() {
+        displayMammal();
+        System.out.println("It is a Dog.");
+
+    }
+
+}
+    
+-----------------------------------------------------------------
+
+package animals;
+
+public class Eagle extends Bird {
+
+    public Eagle(String name, String feather) {
+        super(name, feather);
+    }
+
+    public void eagleDisplay() {
+        displaybird();
+        System.out.println("Is is an Eagle.");
+
+    }
+}
+    
+-----------------------------------------------------------------
+
+package animals;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Dog dog = new Dog("Jai", "Fur Hair");
+        Eagle eagle = new Eagle("Dancel", "Feather");
+
+        dog.dogDisplay();
+        eagle.eagleDisplay();
+
+    }
+
+}
+
