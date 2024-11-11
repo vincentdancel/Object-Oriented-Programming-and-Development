@@ -1,0 +1,77 @@
+package vehicle;
+
+public class Vehicle {
+
+    private String brand;
+
+    public Vehicle(String brand) {
+        this.brand = brand;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void displaybrand() {
+        System.out.println("The brand is:" + brand);
+
+    }
+}
+--------------------------------------------------------
+
+package vehicle;
+
+public class Cars extends Vehicle {
+
+    private String color;
+
+    public Cars(String brand, String color) {
+        super(brand);
+        this.color = color;
+
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void displayCar() {
+        displaybrand();
+        System.out.println("The color of the Car:" + color);
+    }
+
+}
+-------------------------------------------------------------
+
+package vehicle;
+
+public class SportCar extends Cars {
+
+    private int speed;
+
+    public SportCar(String brand, String color, int speed) {
+        super(brand, color);
+        this.speed = speed;
+
+    }
+
+    public void displayAll() {
+        displayCar();
+        System.out.println("The speed:" + speed + "km/h");
+    }
+}
+
+-------------------------------------------------------------
+
+package vehicle;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        SportCar sportcar = new SportCar("Ferrari", "Black", 100);
+
+        sportcar.displayAll();
+    }
+
+}
