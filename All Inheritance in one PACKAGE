@@ -1,0 +1,236 @@
+package com.mycompany.person;
+
+import javax.swing.JOptionPane;
+
+public class Person {
+
+    private String name;
+    private int age;
+    private String address;
+
+    public Person(String name, int age, String address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void getDetails() {
+        JOptionPane.showMessageDialog(null, "Name: " + getName() + "\nAge: " + getAge() + "\nAddress: " + getAddress());
+    }
+}
+------------------------------------------------------------------------------------------------------------------------
+
+package com.mycompany.person;
+
+class Student extends Person {
+    String studentID;
+    String major;
+
+    public Student(String name, int age, String address, String studentID, String major) {
+        super(name, age, address);
+        this.studentID = studentID;
+        this.major = major;
+    }
+
+    public void study() {
+        System.out.println(name + " is studying " + major);
+    }
+}
+
+----------------------------------------------------------------------
+
+package com.mycompany.person;
+
+import javax.swing.JOptionPane;
+
+public class AdminStaff extends Person {
+    private String staffID;
+    private String role;
+
+    public AdminStaff(String name, int age, String address, String staffID, String role) {
+        super(name, age, address); 
+        this.staffID = staffID;
+        this.role = role;
+    }
+
+    public String getStaffID() {
+        return staffID;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void manageAdminTasks() {
+        JOptionPane.showMessageDialog(null,getName() + " is managing tasks as a " + getRole() + ".");
+    }
+}
+-----------------------------------------------------------------------------------------------------
+
+package com.mycompany.person;
+
+import javax.swing.JOptionPane;
+
+public class Faculty extends Person {
+
+    private String facultyID;
+    private String department;
+
+    public Faculty(String name, int age, String address, String facultyID, String department) {
+        super(name, age, address);
+        this.facultyID = facultyID;
+        this.department = department;
+    }
+
+    public String getFacultyID() {
+        return facultyID;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void teachCourse() {
+        JOptionPane.showMessageDialog(null,getName() + " is teaching a course in the " + getDepartment() + " department.");
+    }
+}
+---------------------------------------------------------------------------------------------------------------
+
+package com.mycompany.person;
+
+import javax.swing.JOptionPane;
+
+public class GraduateStudent extends Student {
+    private String researchTopic;
+
+    public GraduateStudent(String name, int age, String address, String studentID, String major, String researchTopic) {
+        super(name, age, address, studentID, major);
+        this.researchTopic = researchTopic;
+    }
+
+    public String getResearchTopic() {
+        return researchTopic;
+    }
+
+    public void submitThesis() {
+        JOptionPane.showMessageDialog(null,getName() + " is submitting a thesis on " + getResearchTopic() + ".");
+    }
+}
+----------------------------------------------------------------------------------------------------------------------
+
+package com.mycompany.person;
+
+import javax.swing.JOptionPane;
+
+interface Employee {
+
+    String getEmployeeID();
+
+    double getSalary();
+
+    void work();
+}
+
+public class ResearchAssistant extends Student implements Employee {
+
+    private String employeeID;
+    private double salary;
+    private String labName;
+
+    public ResearchAssistant(String name, int age, String address, String studentID, String major,
+            String employeeID, double salary, String labName) {
+        super(name, age, address, studentID, major);
+        this.employeeID = employeeID;
+        this.salary = salary;
+        this.labName = labName;
+    }
+
+    @Override
+    public String getEmployeeID() {
+        return employeeID;
+    }
+
+    @Override
+    public double getSalary() {
+        return salary;
+    }
+
+    public String getLabName() {
+        return labName;
+    }
+
+    @Override
+    public void work() {
+        JOptionPane.showMessageDialog(null,getName() + " is working in the " + getLabName() + " as a Research Assistant.");
+    }
+
+    public void conductResearch() {
+        JOptionPane.showMessageDialog(null,getName() + " is conducting research in the lab on " + getMajor() + ".");
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+package com.mycompany.person;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        while (true) {
+            int choice = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Graduate Student"
+                    + "\n2. Research Assistant"
+                    + "\n3. Faculty"
+                    + "\n4. Admin"
+                    + "\n5. Exit","Menu",JOptionPane.QUESTION_MESSAGE));
+
+            switch (choice) {
+
+                case 1:
+                    GraduateStudent gs = new GraduateStudent("Kim", 25, "Estrada 4th", "203853", "Information Technology", "Slice It");
+                    gs.getDetails();
+                    gs.study();
+                    gs.submitThesis();
+                    break;
+
+                case 2:
+                    ResearchAssistant ra = new ResearchAssistant("James", 20, "San Roque", "201495", "Computer Programming", "RA789", 3000.00, "Computer Lab");
+                    ra.getDetails();
+                    ra.study();
+                    ra.conductResearch();
+                    ra.work();
+                    break;
+
+                case 3:
+
+                    Faculty f = new Faculty("Mr. Castro", 25, "Estrada 4th", "F123", "CCIS");
+                    f.getDetails();
+                    f.teachCourse();
+                    break;
+
+                case 4:
+                    AdminStaff a = new AdminStaff("Ed", 26, "Roxas St.", "A101", "Human Resources");
+                    a.getDetails();
+                    a.manageAdminTasks();
+                    break;
+
+                case 5:
+                    System.exit(0);
+            }
+        }
+    }
+}
