@@ -1,0 +1,138 @@
+package polymorphism;
+
+abstract class LibraryItem {
+
+    private String title;
+    private String pubDate;
+
+    public LibraryItem(String title, String pubDate) {
+        this.title = title;
+        this.pubDate = pubDate;
+    }
+
+    public String title() {
+        return title;
+    }
+
+    public String pubDate() {
+        return pubDate;
+    }
+
+    public void displayInfo() {
+        System.out.println("The title is:" + title
+                + "\nThe publication date:" + pubDate);
+    }
+
+    public abstract double getFine(int overDueItemsPerDay);
+
+}
+--------------------------------------------------------------------
+
+package polymorphism;
+
+public class Book extends LibraryItem {
+
+    private String AuthorName;
+    private String genre;
+    private int numPages;
+
+    public Book(String title, String pubDate, String AuthorName, String genre, int numPages) {
+        super(title, pubDate);
+        this.AuthorName = AuthorName;
+        this.genre = genre;
+        this.numPages = numPages;
+
+    }
+
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("The author name:" + AuthorName
+                + "\nThe genre:" + genre
+                + "\nThe number of pages" + numPages
+                + "\nREMINDER: the fine for overdue per day is Php5.50 per day");
+    }
+
+    public double getFine(int overDueItemsPerDay) {
+        return overDueItemsPerDay * 5.50;
+    }
+}
+
+---------------------------------------------------------------------------------------------
+package polymorphism;
+
+public class Magazine extends LibraryItem {
+
+    private int issueNumber;
+    private String Pubmonth;
+    private String topic;
+
+    public Magazine(String title, String pubDate, int issueNumber, String Pubmonth, String topic) {
+        super(title, pubDate);
+        this.issueNumber = issueNumber;
+        this.Pubmonth = Pubmonth;
+        this.topic = topic;
+    }
+
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("The issue number:" + issueNumber
+                + "\nThe publication month: " + Pubmonth
+                + "\nThe topic of magazine:" + topic
+                + "\nREMINDER: the fine for overdue per day is Php5.30 per day");
+
+    }
+
+    public double getFine(int overDueItemsPerDay) {
+        return overDueItemsPerDay * 5.30;
+    }
+}
+-------------------------------------------------------------------------------------------
+
+package polymorphism;
+
+public class DVD extends LibraryItem {
+
+    private String director;
+    private int duration;
+    private String MainActors;
+
+    public DVD(String title, String pubDate, String director, int duration, String MainActors) {
+        super(title, pubDate);
+        this.director = director;
+        this.duration = duration;
+        this.MainActors = MainActors;
+    }
+
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("The director of movie:" + director
+                + "\nThe duration of movie:" + duration + "hour"
+                + "\nThe Main Actors of the movie:" + MainActors
+        + "\nREMINDER: the fine for overdue per day is Php10.00 per day");
+    }
+
+    public double getFine(int overDueItemsPerDay) {
+        return overDueItemsPerDay * 10.00;
+    }
+}
+---------------------------------------------------------------------------------------------------------
+package polymorphism;
+
+public class Main {
+
+    public static void main(String[] args) {
+        LibraryItem [] libraryitems = new LibraryItem[3];
+        
+        libraryitems[0] = new Book ("Ambassador to the penguins", " April 2, 2019", "Murphy", "Inspirational", 200);
+        libraryitems[1] = new Magazine ("Vogue","March 10,2010",0110,"March", "Model");
+        libraryitems[2] = new DVD ("Shrek","February 2,2004","Dancel",1,"Jai");
+    
+         for (LibraryItem item : libraryitems) {
+            item.displayInfo();  
+            System.out.println("Fine for 1 month overdue: Php" + item.getFine(30));  
+            System.out.println("--------------");
+        }
+    }
+}
+    
+    
