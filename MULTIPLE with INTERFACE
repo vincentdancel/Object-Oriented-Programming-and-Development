@@ -1,0 +1,124 @@
+
+package testmorph;
+
+class Snake  implements Animal,Flyable {
+
+    public void makeSound() {
+        System.out.println("\nSnake:");
+        System.out.println("Ssssssssssssss");
+
+    }
+
+    public void fly() {
+        System.out.println("I cannot fly");
+    }
+}
+
+----------------------
+package testmorph;
+
+class Pig  implements Animal,Flyable {
+
+    public void makeSound() {
+        System.out.println("\nPig:");
+        System.out.println("Oinkkkkkk");
+
+    }
+
+    public void fly() {
+        System.out.println("I cannot fly");
+    }
+}
+----------------------------------------
+
+package testmorph;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Animal a[] = new Animal[5];
+
+        a[0] = new Birds();
+        a[1] = new Dog();
+        a[2] = new Pig();
+        a[3] = new Snake();
+        a[4] = new Lion();
+
+        for (Animal animal : a) {
+            animal.makeSound();
+            //convert
+            if (animal instanceof Flyable) {
+                //casting
+                ((Flyable) animal).fly();
+
+            }
+        }
+
+    }
+}
+----------------------------------------------
+
+package testmorph;
+
+class Lion  implements Animal,Flyable {
+
+    public void makeSound() {
+        System.out.println("\nLion:");
+        System.out.println("Roarrrr");
+
+    }
+
+    public void fly() {
+        System.out.println("I cannot fly");
+    }
+}
+------------------------------------------
+
+package testmorph;
+
+interface Flyable {
+
+    public void fly();
+}
+----------------------------------------------
+package testmorph;
+
+class Dog  implements Animal,Flyable {
+
+    public void makeSound() {
+        System.out.println("\nDog:");
+        System.out.println("Awww");
+
+    }
+
+    public void fly() {
+        System.out.println("I cannot fly");
+    }
+}
+---------------------------------------
+package testmorph;
+
+class Birds  implements Animal,Flyable {
+
+    public void makeSound() {
+        System.out.println("Bird:");
+        System.out.println("Tweet");
+
+    }
+
+    public void fly() {
+        System.out.println("I can fly");
+    }
+}
+-----------------------------------------
+package testmorph;
+
+interface Animal {
+
+    public void makeSound();
+
+}
+
+
+
