@@ -122,3 +122,37 @@ public class CarTest {
         n.close();
     }
 }
+
+ALTERNATE
+
+package car;
+
+public class CarTest {
+
+    public static void main(String[] args) {
+
+        // Create a car object with default values
+        Car car = new Car();
+        car.setMake("Toyota");
+        car.setModel("Corolla");
+        car.setLicensePlate("ABC-123");
+        car.setRentalPricePerDay(50.0);
+        car.setIsRented(false);
+
+        // Display car details
+        car.displayDetails();
+
+        // Test renting the car
+        System.out.println("\nAttempting to rent the car...");
+        if (!car.isRented()) {
+            car.rent();
+        }
+
+        // Test returning the car
+        System.out.println("\nAttempting to return the car...");
+        if (car.isRented()) {
+            car.returnCar();
+        }
+    }
+}
+
