@@ -57,6 +57,44 @@ public class Main {
 
     }
 }
+
+
+ALTERNATE
+
+package testmorph;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Animal a[] = new Animal[5];
+
+        a[0] = new Birds();
+        a[1] = new Dog();
+        a[2] = new Pig();
+        a[3] = new Snake();
+        a[4] = new Lion();
+
+        for (Animal animal : a) {
+            animal.makeSound();
+
+            // Using else if to check and cast to appropriate interfaces
+            if (animal instanceof Flyable) {
+                // Casting and calling fly method
+                ((Flyable) animal).fly();
+            } else if (animal instanceof Swimmable) {
+                // Casting and calling swim method
+                ((Swimmable) animal).swim();
+            } else if (animal instanceof Runnable) {
+                // Casting and calling run method
+                ((Runnable) animal).run();
+            } else {
+                System.out.println("This animal has no additional abilities.");
+            }
+        }
+    }
+}
+
 ----------------------------------------------
 
 package testmorph;
