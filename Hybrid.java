@@ -1,3 +1,57 @@
+// Base Class
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Interface for Flying Behavior
+interface Flyable {
+    void fly();
+}
+
+// Intermediate Class (Single Inheritance from Animal)
+class Bird extends Animal {
+    void layEggs() {
+        System.out.println("This bird lays eggs.");
+    }
+}
+
+// Derived Class (Multiple Inheritance using Interface)
+class Bat extends Animal implements Flyable {
+    void nocturnal() {
+        System.out.println("This bat is nocturnal.");
+    }
+
+    @Override
+    public void fly() {
+        System.out.println("This bat can fly.");
+    }
+}
+
+// Main Class to Test the Hybrid Inheritance
+public class HybridInheritanceExample {
+    public static void main(String[] args) {
+        // Array of Animal objects
+        Animal[] animals = new Animal[2];
+        animals[0] = new Bird();
+        animals[1] = new Bat();
+
+        // Loop through the array and perform actions
+        for (Animal animal : animals) {
+            animal.eat();
+            if (animal instanceof Bird) {
+                ((Bird) animal).layEggs();
+            } else if (animal instanceof Bat) {
+                Bat bat = (Bat) animal;
+                bat.nocturnal();
+                bat.fly();
+            }
+        }
+    }
+}
+
+
 package hybrid;
 
 import javax.swing.JOptionPane;
