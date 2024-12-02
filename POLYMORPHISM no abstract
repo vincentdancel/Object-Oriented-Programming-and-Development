@@ -1,0 +1,99 @@
+// Base class Employee
+class Employee {
+    private String name;
+    private double salary;
+
+    public Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void increaseSalary(double percentage) {
+        salary += salary * (percentage / 100);
+        System.out.println(name + "'s new salary after " + percentage + "% increase: $" + salary);
+    }
+
+    public void work() {
+        System.out.println(name + " is working.");
+    }
+}
+
+// Manager subclass
+class Manager extends Employee {
+    public Manager(String name, double salary) {
+        super(name, salary);
+    }
+
+    @Override
+    public void work() {
+        System.out.println(getName() + " is planning and managing teams.");
+    }
+
+    @Override
+    public void increaseSalary(double percentage) {
+        super.increaseSalary(15); // Fixed percentage for managers
+    }
+}
+
+// Developer subclass
+class Developer extends Employee {
+    public Developer(String name, double salary) {
+        super(name, salary);
+    }
+
+    @Override
+    public void work() {
+        System.out.println(getName() + " is writing and debugging code.");
+    }
+
+    @Override
+    public void increaseSalary(double percentage) {
+        super.increaseSalary(10); // Fixed percentage for developers
+    }
+}
+
+// Intern subclass
+class Intern extends Employee {
+    public Intern(String name, double salary) {
+        super(name, salary);
+    }
+
+    @Override
+    public void work() {
+        System.out.println(getName() + " is learning and assisting with tasks.");
+    }
+
+    @Override
+    public void increaseSalary(double percentage) {
+        super.increaseSalary(5); // Fixed percentage for interns
+    }
+}
+
+// Main Program
+public class Organization {
+    public static void main(String[] args) {
+        // Create an array of Employee objects
+        Employee[] employees = {
+            new Manager("Alice", 90000),
+            new Developer("Bob", 80000),
+            new Intern("Charlie", 30000)
+        };
+
+        // Iterate over the array and perform operations
+        for (Employee employee : employees) {
+            System.out.println("\nEmployee: " + employee.getName());
+            System.out.println("Initial Salary: $" + employee.getSalary());
+            employee.work();
+            employee.increaseSalary(0); // Percentage is fixed per type, so parameter is unused here
+            System.out.println("Final Salary: $" + employee.getSalary());
+        }
+    }
+}
