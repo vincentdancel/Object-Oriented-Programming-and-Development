@@ -1,0 +1,124 @@
+public abstract class Employee {
+    protected String name;
+    protected double salary;
+
+    public Employee(String name, double initialSalary) {
+        this.name = name;
+        this.salary = initialSalary;
+    }
+
+    public Employee() {
+        this("Unknown", 0.0);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public abstract void work();
+
+    public void increaseSalary(double amount) {
+        salary += amount;
+        System.out.printf("%s's salary increased to $%.2f%n", name, salary);
+    }
+}
+
+class Manager extends Employee {
+    public Manager() {
+        super("Unknown Manager", 50000);
+    }
+
+    public Manager(String name, double initialSalary) {
+        super(name, initialSalary);
+    }
+
+    @Override
+    public void work() {
+        System.out.printf("%s is planning and managing teams.%n", name);
+    }
+
+    public void increaseSalary() {
+        double raiseAmount = salary * 0.15;
+        salary += raiseAmount;
+        System.out.printf("%s received a 15%% raise. New salary: $%.2f%n", name, salary);
+    }
+}
+
+class Developer extends Employee {
+    public Developer() {
+        super("Unknown Developer", 60000);
+    }
+
+    public Developer(String name, double initialSalary) {
+        super(name, initialSalary);
+    }
+
+    @Override
+    public void work() {
+        System.out.printf("%s is writing and debugging code.%n", name);
+    }
+
+    public void increaseSalary() {
+        double raiseAmount = salary * 0.10;
+        salary += raiseAmount;
+        System.out.printf("%s received a 10%% raise. New salary: $%.2f%n", name, salary);
+    }
+}
+
+class Intern extends Employee {
+    public Intern() {
+        super("Unknown Intern", 30000);
+    }
+
+    public Intern(String name, double initialSalary) {
+        super(name, initialSalary);
+    }
+
+    @Override
+    public void work() {
+        System.out.printf("%s is learning and assisting with tasks.%n", name);
+    }
+
+    public void increaseSalary() {
+        double raiseAmount = salary * 0.05;
+        salary += raiseAmount;
+        System.out.printf("%s received a 5%% raise. New salary: $%.2f%n", name, salary);
+    }
+}
+
+public class EmployeeHierarchyDemo {
+    public static void main(String[] args) {
+        // Create an array with a fixed size
+        Employee[] employees = new Employee[5];
+
+        // Initialize array elements
+        employees[0] = new Manager("Alice Johnson", 75000);
+        employees[1] = new Developer("Bob Smith", 65000);
+        employees[2] = new Intern("Charlie Brown", 35000);
+        employees[3] = new Manager("Diana Rodriguez", 80000);
+        employees[4] = new Developer("Ethan Lee", 60000);
+
+        // Performance review
+        System.out.println("Employee Performance Review:\n");
+        for (Employee employee : employees) {
+            System.out.printf("Employee: %s%n", employee.getName());
+            System.out.printf("Initial Salary: $%.2f%n", employee.getSalary());
+
+            employee.work();
+
+            if (employee instanceof Manager) {
+                ((Manager) employee).increaseSalary();
+            } else if (employee instanceof Developer) {
+                ((Developer) employee).increaseSalary();
+            } else if (employee instanceof Intern) {
+                ((Intern) employee).increaseSalary();
+            }
+
+            System.out.printf("Final Salary: $%.2f%n%n", employee.getSalary());
+        }
+    }
+}
